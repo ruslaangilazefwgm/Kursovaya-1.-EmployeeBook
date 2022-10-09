@@ -44,13 +44,27 @@ public class Main {
         }
     }
 
-    public static void workerMinSalaryOfDepartment(Employee[] minD, int sectionNumber) {
-        while (int i = sectionNumber; i++) {
-            if (minD[i].getSection() == sectionNumber) {
-                salaryMin(minD);
+    public static int workerMinSalaryOfDepartment(Employee[] minD, int sectionNumber) {
+        int minSalary = 0;
+        for (int i = 0; i < minD.length; i++) {
+            minSalary = minD[2].getSalary();
+            if (minD[i].getSection() == sectionNumber && minD[i].getSalary() < minD[2].getSalary()) {
+                minSalary = minD[i].getSalary();
             }
         }
+        return minSalary;
     }
+    public static int workerMaxSalaryOfDepartment(Employee[] maxD, int sectionNumber) {
+        int maxSalary = 0;
+        for (int i = 0; i < maxD.length; i++) {
+            maxSalary = maxD[2].getSalary();
+            if (maxD[i].getSection() == sectionNumber && maxD[i].getSalary() > maxD[2].getSalary()) {
+                maxSalary = maxD[i].getSalary();
+            }
+        }
+        return maxSalary;
+    }
+
 
        public static void main(String[] args) {
         Employee[] empl = new Employee[10];
@@ -70,17 +84,18 @@ public class Main {
         System.out.println("Минимальная зарплата: " + salaryMin(empl));
         System.out.println("Максимальная зарплата: " + salaryMax(empl));
 
-        int count = 0;
-        count = salaryMonthSum(empl) / empl.length;
-        System.out.println("Средняя зарплата: " + count);
+        int average = 0;
+        average = salaryMonthSum(empl) / empl.length;
+        System.out.println("Средняя зарплата: " + average);
 
         System.out.println("ФИО всех сотрудников: ");
         fioPrint(empl);
+
         salaryIndexation(empl, 0.05);
-        workerMinSalaryOfDepartment(empl, 3);
+
+        System.out.println(workerMinSalaryOfDepartment(empl, 3));
+           System.out.println(workerMaxSalaryOfDepartment(empl, 3));
 
 
-
-
-    }
+       }
 }
