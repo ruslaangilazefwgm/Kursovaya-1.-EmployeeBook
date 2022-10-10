@@ -7,8 +7,8 @@ public class Main {
 
     public static int salaryMonthSum(Employee[] s) {
         int sum = 0;
-        for (int i = 0; i < s.length; i++) {
-            sum = sum + s[i].getSalary();
+        for (Employee employee : s) {
+            sum += employee.getSalary();
         }
         return sum;
     }

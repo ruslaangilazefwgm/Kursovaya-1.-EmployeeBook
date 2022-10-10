@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Employee {
     private String name;
     private String patronymic;
@@ -6,7 +8,7 @@ public class Employee {
     private int salary;
     private int id;
 
-    private static int counter;
+    private static int counter = 1;
 
     public Employee(String name, String patronymic, String surname, int section, int salary) {
         this.name = name;
@@ -18,22 +20,22 @@ public class Employee {
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
     public String getSurname() {
-        return this.surname;
+        return surname;
     }
     public String getPatronymic() {
-        return this.patronymic;
+        return patronymic;
     }
     public int getSection() {
-        return this.section;
+        return section;
     }
     public int getSalary() {
-        return this.salary;
+        return salary;
     }
     public int getId() {
-        return this.id;
+        return id;
     }
 
     public void setSection( int section) {
@@ -46,6 +48,21 @@ public class Employee {
 
     public String toString() {
         return "Id: " + id + "; ФИО: " + name + patronymic + surname + "; Отдел: " + section + "; Зарплата: " + salary;
+    }
+
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Employee employee = (Employee) o;
+        return Objects.equals(name, employee.name) && Objects.equals(patronymic, employee.patronymic) && Objects.equals(surname, employee.surname)  && Objects.equals(section, employee.section)  && Objects.equals(salary, employee.salary)  && Objects.equals(id, employee.id);
+    }
+
+    public int hashCode() {
+        return Objects.hash(name, patronymic, surname, section, salary, id);
     }
 
 
