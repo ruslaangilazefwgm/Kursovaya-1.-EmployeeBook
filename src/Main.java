@@ -1,22 +1,32 @@
 public class Main {
     public static void fullRosterPrint(Employee[] e) {
         for (int i = 0; i < e.length; i++) {
-            System.out.println(e[i]);
+            if (e[i] == null) {
+                System.out.println("Нет работника");
+            } else {
+                System.out.println(e[i]);
+            }
         }
     }
 
     public static int salaryMonthSum(Employee[] s) {
         int sum = 0;
-        for (Employee employee : s) {
-            sum += employee.getSalary();
-        }
+        for (int i = 0; i < s.length; i++) {
+            if (s[i] == null) {
+                System.out.println("Нет работника");
+            } else {
+                sum = sum + s[i].getSalary();
+            }
+                    }
         return sum;
     }
 
     public static int salaryMin(Employee[] minS) {
         int minSalary = minS[0].getSalary();
         for (int i = 0; i < minS.length; i++) {
-            if (minS[i].getSalary() <= minSalary) {
+            if (minS[i] == null) {
+                System.out.println("Нет работника");
+            } else if (minS[i].getSalary() <= minSalary) {
                 minSalary = minS[i].getSalary();
             }
         }
@@ -25,7 +35,9 @@ public class Main {
     public static int salaryMax(Employee[] maxS) {
         int maxSalary = maxS[0].getSalary();
         for (int i = 0; i < maxS.length; i++) {
-            if (maxS[i].getSalary() >= maxSalary) {
+            if (maxS[i] == null) {
+                System.out.println("Нет работника");
+            } else if (maxS[i].getSalary() >= maxSalary) {
                 maxSalary = maxS[i].getSalary();
             }
         }
@@ -34,13 +46,21 @@ public class Main {
 
     public static void fioPrint(Employee[] e) {
         for (int i = 0; i < e.length; i++) {
-            System.out.println(e[i].getName() + e[i].getSurname() + e[i].getPatronymic());
+            if (e[i] == null) {
+                System.out.println("Нет работника");
+            } else {
+                System.out.println(e[i].getName() + e[i].getSurname() + e[i].getPatronymic());
+            }
         }
     }
     public static void salaryIndexation (Employee[] index, double procentIndexation) {
         for (int i = 0; i < index.length; i++) {
-            index[i].setSalary((int) (index[i].getSalary() + index[i].getSalary() * procentIndexation));
-            System.out.println(index[i].getSalary());
+            if (index[i] == null) {
+                System.out.println("Нет работника");
+            } else {
+                index[i].setSalary((int) (index[i].getSalary() + index[i].getSalary() * procentIndexation));
+                System.out.println(index[i].getSalary());
+            }
         }
     }
 
@@ -95,6 +115,7 @@ public class Main {
 
         System.out.println(workerMinSalaryOfDepartment(empl, 3));
            System.out.println(workerMaxSalaryOfDepartment(empl, 3));
+
 
 
        }
